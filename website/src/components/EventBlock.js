@@ -36,11 +36,11 @@ const LLink = styled('a')`
   ${tw('my-2 block')};
 `
 
-const Empty = styled('svg')`
+const EmptySVG = styled('svg')`
   ${tw('p-2 stroke-current text-red cursor-pointer hover:text-red-dark')};
 `
 
-const Full = styled('svg')`
+const FullSVG = styled('svg')`
   ${tw('p-2 stroke-current text-green cursor-pointer hover:text-green-dark')};
 `
 
@@ -95,7 +95,7 @@ class EventBlock extends React.Component {
         </LLink>
         <ButtonsGoing>
           {!this.state.going && (
-            <Empty
+            <EmptySVG
               alt="Not going button"
               onClick={() => this.handleSubmit()}
               xmlns="http://www.w3.org/2000/svg"
@@ -108,10 +108,10 @@ class EventBlock extends React.Component {
               strokeLinejoin="round"
             >
               <circle cx="12" cy="12" r="10" />
-            </Empty>
+            </EmptySVG>
           )}
           {this.state.going && (
-            <Full
+            <FullSVG
               alt="Going button"
               onClick={() => this.handleSubmit()}
               xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +125,7 @@ class EventBlock extends React.Component {
             >
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
               <polyline points="22 4 12 14.01 9 11.01" />
-            </Full>
+            </FullSVG>
           )}
           <Help>{`Click to ${
             !this.state.going ? `add to your` : `remove from your`
