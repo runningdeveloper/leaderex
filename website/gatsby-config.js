@@ -2,9 +2,10 @@ const path = require(`path`)
 module.exports = {
   siteMetadata: {
     title: 'Leaderex Agenda (Unofficial)',
-    description: 'Unofficial version of the Leaderex agenda, I just wanted an easier way to plan my day. It\'s a bit rough but I think it does what I wanted. Built by runningdeveloper.com'
+    description:
+      "Unofficial version of the Leaderex agenda, I just wanted an easier way to plan my day. It's a bit rough but I think it does what I wanted. Built by runningdeveloper.com",
   },
-  pathPrefix:`/leaderex`,
+  pathPrefix: `/leaderex`,
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
@@ -25,6 +26,20 @@ module.exports = {
         theme_color: '#0E0B92',
         display: 'minimal-ui',
         icon: 'src/images/icon.png', // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-125051348-1',
+        // Puts tracking script in the head instead of the body
+        head: false,
+        // Setting this parameter is optional
+        // anonymize: true,
+        // Setting this parameter is also optional
+        // respectDNT: true,
+        // Avoids sending pageview hits from custom paths
+        // exclude: ["/preview/**", "/do-not-track/me/too/"],
       },
     },
     'gatsby-plugin-offline',

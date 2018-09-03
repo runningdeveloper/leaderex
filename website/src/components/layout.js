@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-import styled from 'react-emotion';
+import styled from 'react-emotion'
 
 const Container = styled('div')`
   ${tw('container mx-auto px-4 max-w-md font-sans')};
-`;
+`
 const Heading = styled('h1')`
   ${tw('font-sans')};
-`;
+`
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -31,15 +31,15 @@ const Layout = ({ children }) => (
           title={data.site.siteMetadata.title}
           htmlAttributes={{ lang: 'en' }}
           meta={[
-            { name: 'description', content: data.site.siteMetadata.description },
+            {
+              name: 'description',
+              content: data.site.siteMetadata.description,
+            },
           ]}
-        >
-        </Helmet>
+        />
         <Container>
           <Heading>{data.site.siteMetadata.title}</Heading>
-          <div>
-            {children}
-          </div>
+          <div>{children}</div>
         </Container>
       </>
     )}
