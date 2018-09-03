@@ -7,7 +7,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import styled from 'react-emotion'
 
 const Container = styled('div')`
-  ${tw('container mx-auto px-4 max-w-md font-sans')};
+  ${tw('container mx-auto max-w-md font-sans')};
 `
 const Heading = styled('h1')`
   ${tw('font-sans')};
