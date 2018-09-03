@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "node publish.js"
+    "publish": "gh-pages -d website/public"
   },
   "author": "",
   "license": "ISC",
