@@ -64,7 +64,7 @@ class IndexPage extends React.Component {
     });
     this.state = {
       options: types,
-      selectedOption: types[0],
+      selectedOption: [],
       originalList: this.props.data.allDataJson.edges[0].node.list,
       displayList: this.props.data.allDataJson.edges[0].node.list,
       goingList: getLocalStorage(),

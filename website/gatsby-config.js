@@ -2,7 +2,7 @@ const path = require(`path`)
 module.exports = {
   siteMetadata: {
     title: 'Leaderex Agenda (Unofficial)',
-    description: 'Unofficial version of the Leaderex agenda, I just wanted an easier way to plan my day. Its a bit rough but I think does what I wanted. Built by runningdeveloper.com'
+    description: 'Unofficial version of the Leaderex agenda, I just wanted an easier way to plan my day. It\'s a bit rough but I think it does what I wanted. Built by runningdeveloper.com'
   },
   plugins: [
     {
@@ -20,10 +20,10 @@ module.exports = {
         name: 'gatsby-starter-default',
         short_name: 'starter',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
+        background_color: '#0E0B92',
+        theme_color: '#0E0B92',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/icon.png', // This path is relative to the root of the site.
       },
     },
     'gatsby-plugin-offline',
