@@ -4,6 +4,7 @@ module.exports = {
     title: 'Leaderex Agenda (Unofficial)',
     description: 'Unofficial version of the Leaderex agenda, I just wanted an easier way to plan my day. It\'s a bit rough but I think it does what I wanted. Built by runningdeveloper.com'
   },
+  pathPrefix:`/leaderex`,
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
