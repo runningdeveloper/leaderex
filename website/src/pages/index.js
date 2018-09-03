@@ -36,17 +36,23 @@ const sortByTime = (array) => {
 }
 
 const saveToLocalStorage = (list) => {
-  localStorage.setItem('going', JSON.stringify(list));
+  if (typeof window !== `undefined`) {
+    localStorage.setItem('going', JSON.stringify(list));
+  }
 };
 
 const getLocalStorage = () => {
-  if (localStorage.hasOwnProperty('going')) {
-    let value = localStorage.getItem('going');
-    try {
-      value = JSON.parse(value);
-      return value;
-    } catch (e) {
-      // handle empty string
+  if (typeof window !== `undefined`) {
+    if (localStorage.hasOwnProperty('going')) {
+      let value = localStorage.getItem('going');
+      try {
+        value = JSON.parse(value);
+        return value;
+      } catch (e) {
+        // handle empty string
+        return [];
+      }
+    }else{
       return [];
     }
   }else{
