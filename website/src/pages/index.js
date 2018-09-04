@@ -31,6 +31,18 @@ const Navigation = styled('nav')`
   ${tw('flex my-2')};
 `
 
+const MenuSticky = styled('nav')`
+  background-color: rgba(246, 246, 246, 0.9);
+  ${tw('py-1')};
+  z-index: 3;
+  position: sticky;
+  top: -1px;
+`;
+
+const TimeSelect = styled(Select)`
+${tw('mt-1')};
+`
+
 // not great
 const sortByTime = array => {
   array.sort((a, b) => {
@@ -68,6 +80,14 @@ const getLocalStorage = () => {
   }
 }
 
+const timeOptions = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'].map(time => 
+  {
+    return {
+      value: time,
+      label: `After ${time}`
+    }
+  });
+
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
@@ -79,6 +99,8 @@ class IndexPage extends React.Component {
     this.state = {
       options: types,
       selectedOption: [],
+      selectedTimeOption: timeOptions[0],
+      timeOptions,
       originalList: this.props.data.allDataJson.edges[0].node.list,
       displayList: this.props.data.allDataJson.edges[0].node.list,
       goingList: getLocalStorage(),
@@ -88,6 +110,7 @@ class IndexPage extends React.Component {
     this.handleImageChange = this.handleImageChange.bind(this)
     this.handleGoingChange = this.handleGoingChange.bind(this)
     this.handleScheduleClick = this.handleScheduleClick.bind(this)
+    this.handleTimeChange = this.handleTimeChange.bind(this)
   }
 
   handleImageChange(event) {
@@ -136,7 +159,18 @@ class IndexPage extends React.Component {
       })
     }
 
-    this.setState({ selectedOption, displayList: filteredList })
+    this.setState({ selectedOption, selectedTimeOption: timeOptions[0], displayList: filteredList })
+  }
+
+  handleTimeChange = selectedOption => {
+    let filteredList = [];
+    if (selectedOption.length !== 0) {
+      filteredList = this.state.displayList.filter(event => {
+        return new Date('1970/01/01 ' + event.time.substring(0, 4))>=new Date('1970/01/01 ' + selectedOption.value)
+      })
+    }
+
+    this.setState({ selectedTimeOption: selectedOption, displayList: filteredList })
   }
 
   componentDidMount() {}
@@ -148,24 +182,35 @@ class IndexPage extends React.Component {
     const data = this.props.data
     return (
       <Layout>
-        <Navigation>
-          <NavLinkNormal onClick={() => this.handleScheduleClick('all')}>
-            All
-          </NavLinkNormal>
-          <NavLinkNormal onClick={() => this.handleScheduleClick('schedule')}>
-            My Schedule
-          </NavLinkNormal>
-          <NavLink to={'/about/'}>About</NavLink>
-        </Navigation>
-        <Select
-          value={selectedOption}
-          onChange={this.handleChange}
-          options={this.state.options}
-          isMulti={true}
-          isSearchable={true}
-          placeholder={`Select multiple sections`}
-          isDisabled={this.state.schedule}
-        />
+        <MenuSticky>
+          <Navigation>
+            <NavLinkNormal onClick={() => this.handleScheduleClick('all')}>
+              All
+            </NavLinkNormal>
+            <NavLinkNormal onClick={() => this.handleScheduleClick('schedule')}>
+              My Schedule
+            </NavLinkNormal>
+            <NavLink to={'/about/'}>About</NavLink>
+          </Navigation>
+          <Select
+            value={this.state.selectedOption}
+            onChange={this.handleChange}
+            options={this.state.options}
+            isMulti={true}
+            isSearchable={true}
+            placeholder={`Select multiple sections`}
+            isDisabled={this.state.schedule}
+          />
+          <TimeSelect
+            value={this.state.selectedTimeOption}
+            onChange={this.handleTimeChange}
+            options={this.state.timeOptions}
+            isMulti={false}
+            isSearchable={true}
+            placeholder={`Select Start Time`}
+            isDisabled={this.state.schedule}
+          />
+        </MenuSticky>
         {/* <CheckImage>
         <label>
           Show Speaker Images:
