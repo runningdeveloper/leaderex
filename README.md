@@ -1,3 +1,16 @@
+# Update 5 Sep 2018
+
+- So this was a bit of a fail (doubt anyone will read this so just putting this out)
+- It worked for me on the day but no one else saw it
+- I sent out a tweet kind of hoping people would see it considering I added the event hashtag. But I think I also probably didn't really want anyone to see it. I'm stuggling to show people my work, I'm scared. During the event I saw some people I know and didn't even say 'Hey check out this thing I made'. Oh well I'm learning LOL.
+- Check the twitter and analytics below. Got 1 person to the website on the day (other 2 was me, laptop and phone)
+
+![twitter](twitter.jpg)
+
+![google](google.jpg)
+
+## Original 3 Sep 2018:
+
 # Leaderex Agenda (Unofficial)
 
 [website link](https://runningdeveloper.github.io/leaderex/)
